@@ -76,6 +76,7 @@ import {routing} from './app.route.ts';
 import {AppComponent}  from './app/app.component';
 // modules
 import {MainModule} from "./app/components/main/main.module";
+import {MeasurementService} from "./app/services/MeasurementService";
 //services
 
 @NgModule({
@@ -96,6 +97,7 @@ import {MainModule} from "./app/components/main/main.module";
     providers: [
         {provide: LOCALE_ID, useValue: "ru"},
         {provide: LocationStrategy, useClass: HashLocationStrategy},
+        MeasurementService
     ],
     bootstrap:    [ AppComponent ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
