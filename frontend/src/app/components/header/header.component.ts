@@ -5,7 +5,7 @@ import {Component} from "@angular/core";
 @Component({
     selector: 'header-comp',
     template: require('./header.tmpl.html'),
-    //styles: [require().toString()]
+    styles: [require("!style!css!sass!../../../assets/css/partial/header/header.scss").toString()]
 })
 export class HeaderComponent {
 
