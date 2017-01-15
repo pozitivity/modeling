@@ -10,7 +10,9 @@ import ru.itmo.modeling.tatianagorbunova.wind.service.MeasurementService;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -20,17 +22,15 @@ import java.util.List;
 @Service
 public class MeasurementServiceImpl implements MeasurementService {
 
-    private static final String PATH_TO_EXCEL = ".\\\\src\\\\main\\\\resources\\\\wind.xlsx";
     List<Measurement> measurements = new ArrayList<>();
 
     @Override
     public List<Measurement> getMeasurements() {
-        readExcel();
+        if (measurements.size() == 0) readExcel();
         return measurements;
     }
 
     private void readExcel() {
-        measurements.clear();
         try {
             FileInputStream file = new FileInputStream(getClass().getClassLoader().getResource("wind.xlsx").getPath());
 
@@ -46,12 +46,13 @@ public class MeasurementServiceImpl implements MeasurementService {
                 while(cellIterator.hasNext()) {
                     Cell cell = cellIterator.next();
                     if (cell.getCellType() == Cell.CELL_TYPE_NUMERIC) {
-                        measurement.setTime(cell.getNumericCellValue());
+                        Double time = cell.getNumericCellValue();
+                        measurement.setTime(time.longValue());
                         cell = cellIterator.next();
                         measurement.setSpeed(cell.getNumericCellValue());
                     }
                 }
-                if (measurement != null)
+                if (measurement.getTime() != null || measurement.getSpeed() != null)
                     measurements.add(measurement);
             }
             file.close();

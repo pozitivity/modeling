@@ -1,16 +1,30 @@
-<div>
-    <table class="table">
-        <thead>
+<div class="initial">
+    <!--<tabset>-->
+        <!--<tab heading="Исходные данные">-->
+    <div class="line-chart">
+        <svg width="900" height="500"></svg>
+    </div>
+    <div class="column-table">
+        <table class="table table-hover">
+            <thead>
             <tr>
-                <th>Время</th>
+                <th></th>
+                <th>Время, c</th>
                 <th>Скорость</th>
             </tr>
-        </thead>
-        <tbody>
+            </thead>
+            <tbody>
             <tr *ngFor="let measurement of measurements">
-                <td>{{ measurement.time }}</td>
+                <td>{{ measurement.index }}</td>
+                <td>{{ measurement.timeDisplay }}</td>
                 <td>{{ measurement.speed }}</td>
             </tr>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
+        <!--</tab>-->
+        <!--<tab heading="График">-->
+            <!--&lt;!&ndash;<svg width="900" height="500"></svg>&ndash;&gt;-->
+        <!--</tab>-->
+    <!--</tabset>-->
 </div>

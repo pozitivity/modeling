@@ -1,0 +1,32 @@
+.axis--x path {
+  display: none;
+}
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+.initial {
+  .line-chart {
+    float: left;
+  }
+  padding: 15px;
+  .column-table {
+    padding-top: 15px;
+    .table {
+      width: 30%;
+    }
+  }
+}
+
+.initial .table > thead > tr > th {
+  border-right: 1px solid #ddd !important;
+  border-left: 1px solid #ddd !important;
+  border-top: 1px solid #ddd !important;
+}
+.initial .table > tbody > tr > td {
+  border-right: 1px solid #ddd !important;
+  border-left: 1px solid #ddd !important;
+  border-bottom: 1px solid #ddd !important;
+}

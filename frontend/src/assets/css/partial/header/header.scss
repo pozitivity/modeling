@@ -1,0 +1,19 @@
+.header {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  padding-left: 0;
+  overflow-x: auto;
+  overflow-y: auto;
+  background-color: #191b1c;
+  z-index: 100;
+  color: #fff;
+  font-family: Panama-Light;
+  height: 70px;
+
+  .item-menu {
+    padding: 1.5em 2em;
+    float: left;
+  }
+}

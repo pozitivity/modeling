@@ -4,4 +4,6 @@
 export class Measurement {
     time: number;
     speed: number;
+    timeDisplay: string;
+    index: number;
 }
