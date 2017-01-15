@@ -20,9 +20,12 @@ import * as D3Zoom from "d3-zoom";
 
 export class InitialComponent {
     constructor(private measurementService: MeasurementService) {
-        this.width = 900 - this.margin.left - this.margin.right;
-        this.height = 500 - this.margin.top - this.margin.bottom;
+        this.width = this.WIDTH - this.margin.left - this.margin.right;
+        this.height = this.HEIGHT - this.margin.top - this.margin.bottom;
     }
+
+    private WIDTH: number = 1050;
+    private HEIGHT: number = 600;
 
     private measurements: Measurement[] = [];
 
@@ -58,7 +61,7 @@ export class InitialComponent {
     private initSvg() {
         this.parseTime = D3TimeFormat.timeParse("%dd");
         this.svg = D3.select("svg")
-            .attr("transform", "translate(" + 50 + "," + 20 + ")")
+            .attr("transform", "translate(" + this.margin.left + "," + this.margin.right + ")")
             .call(D3Zoom.zoom().scaleExtent([1, 10]).on("zoom", () => {
                 this.svg.attr("transform", "translate(" + D3.event.transform.x + ")" + " scale(" + D3.event.transform.k + ")")
             }))
@@ -88,6 +91,23 @@ export class InitialComponent {
             .attr("dy", ".71em")
             .style("text-anchor", "end")
             .text("Speed");
+
+        // вертикальные линии сетки
+        D3.selectAll("g.axis.axis--x g.tick")
+            .append("line")
+            .classed("grid-line", true) // добавляем класс
+            .attr("x1", 0)
+            .attr("y1", 0)
+            .attr("x2", 0)
+            .attr("y2", - (this.height));
+
+        D3.selectAll("g.axis.axis--y g.tick")
+            .append("line")
+            .classed("grid-line", true)
+            .attr("x1", 0)
+            .attr("y1", 0)
+            .attr("x2", this.width)
+            .attr("y2", 0);
     }
 
     private drawLine() {
@@ -103,6 +123,24 @@ export class InitialComponent {
             .datum(this.measurements)
             .attr("class", "line")
             .attr("d", this.line);
+
+        // функция интерполяции значений на ось Х
+        let scaleX: any = D3Scale.scaleLinear()
+            .domain([1, 99])
+            .range([0, this.width]);
+
+        let scaleY: any = D3Scale.scaleLinear()
+            .domain([10.28, 0.23])
+            .range([0, this.height]);
+
+        // отметки к точкам
+        this.svg.selectAll(".dot")
+            .data(this.measurements)
+            .enter().append("circle")
+            .attr("class", "dot")
+            .attr("r", 3.5)
+            .attr("cx", function(d) { return scaleX(d.index); })
+            .attr("cy", function(d) { return scaleY(d.speed); });
     }
 
     private parseTimeDisplay(timeNumber: number) : string {
@@ -114,11 +152,6 @@ export class InitialComponent {
         }
         if (timeString.length == 1) timeString = "0" + timeString;
         return "0:" + timeString;
-    }
-
-    private zoomed() {
-        this.svg.append("g")
-            .attr("transform", "translate(" + D3.event.translate + ")scale(" + D3.event.scale + ")")
     }
 
 }

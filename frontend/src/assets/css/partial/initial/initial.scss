@@ -1,23 +1,55 @@
-.axis--x path {
-  display: none;
+.axis .grid-line {
+  stroke: #000;
+  shape-rendering: crispedges;
+  stroke-opacity: 0.2;
 }
 
+.axis text {
+  font: 10px Verdana;
+}
+.dot {
+  fill: lightblue;
+  stroke: steelblue;
+}
 .line {
   fill: none;
-  stroke: steelblue;
-  stroke-width: 1.5px;
+  stroke: skyblue;
+  stroke-width: 3px;
+  stroke-linecap: round;
+  stroke-linejoin: bevel;
 }
 .initial {
-  .line-chart {
-    float: left;
+
+  .initial-task {
+    background-image: url(../../img/initial/initial.png);
+    background-size: 700px 500px;
+    background-repeat: no-repeat;
+    width: 700px;
+    height: 500px;
+    margin: 0 auto;
   }
-  padding: 15px;
-  .column-table {
-    padding-top: 15px;
-    .table {
-      width: 30%;
+
+  .table {
+    width: 60%;
+    display: block;
+    float: right;
+    max-height: 500px;
+    height: 500px;
+    overflow-y: scroll;
+  }
+
+  .line-chart {
+    padding-right: 20px;
+    text-align: center;
+
+    svg {
+      height: 750px;
+      padding-left: 20px;
+      overflow-y: scroll;
+      padding-top: 10px;
     }
   }
+  padding: 15px;
 }
 
 .initial .table > thead > tr > th {

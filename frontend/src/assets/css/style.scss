@@ -1,9 +1,3 @@
 $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
-
-@font-face {
-  font-family: Panama-Light;
-  src: url(fonts/Panama-Light.otf);
-}
-.body {  font-family: Panama-Light;  }

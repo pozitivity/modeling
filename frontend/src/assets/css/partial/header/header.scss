@@ -9,11 +9,26 @@
   background-color: #191b1c;
   z-index: 100;
   color: #fff;
-  font-family: Panama-Light;
-  height: 70px;
+  height: 100px;
 
   .item-menu {
     padding: 1.5em 2em;
     float: left;
+
+    a {
+      color: white;
+
+      &visited {
+        color: white;
+      }
+
+      &link {
+        color: skyblue;
+      }
+
+      &hover {
+        color: skyblue !important;
+      }
+    }
   }
 }

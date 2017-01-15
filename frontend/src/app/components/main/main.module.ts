@@ -9,6 +9,8 @@ import {TranslateModule} from "ng2-translate";
 import {SidebarComponent} from "../sidebar/sidebar.component";
 import {InitialModule} from "../initial/initial.module";
 import {HeaderComponent} from "../header/header.component";
+import {DifferenceModule} from "../difference/difference.module";
+import {ExponentialModule} from "../exponential/exponential.module";
 
 /**
  * Created by tatiana.gorbunova on 03.12.2016.
@@ -22,7 +24,9 @@ import {HeaderComponent} from "../header/header.component";
         TabsModule,
         CommonModule,
         TranslateModule.forRoot(),
-        InitialModule
+        InitialModule,
+        DifferenceModule,
+        ExponentialModule
     ],
     declarations: [
         MainComponent,
