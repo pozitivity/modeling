@@ -1,0 +1,5 @@
+frontend/node_modules/
+backend/target/
+.idea/
+frontend/dist/
+backend/wind.iml
