@@ -46,11 +46,9 @@ export class InitialComponent {
     ngOnInit() {
         this.measurementService.getMeasurements().subscribe((measurements) => {
             measurements.map(m => this.measurements.push(m));
-            let i: number = 1;
             this.measurements.map(m => {
                 m.timeDisplay = this.parseTimeDisplay(m.time);
-                m.index = i++;
-            })
+            });
             this.initSvg();
             this.initAxis();
             this.drawAxis();

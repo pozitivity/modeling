@@ -37,6 +37,7 @@ public class MeasurementServiceImpl implements MeasurementService {
             XSSFWorkbook workbook = new XSSFWorkbook(file);
             XSSFSheet sheet = workbook.getSheetAt(0);
             Iterator<Row> rowIterator = sheet.iterator();
+            Integer i = 1;
             while(rowIterator.hasNext()) {
                 Row row = rowIterator.next();
                 Iterator<Cell> cellIterator = row.cellIterator();
@@ -50,6 +51,7 @@ public class MeasurementServiceImpl implements MeasurementService {
                         measurement.setTime(time.longValue());
                         cell = cellIterator.next();
                         measurement.setSpeed(cell.getNumericCellValue());
+                        measurement.setIndex(i++);
                     }
                 }
                 if (measurement.getTime() != null || measurement.getSpeed() != null)
