@@ -8,6 +8,7 @@ import {CommonModule} from "@angular/common";
 import {TranslateModule} from "ng2-translate";
 import {SidebarComponent} from "../sidebar/sidebar.component";
 import {InitialModule} from "../initial/initial.module";
+import {HeaderComponent} from "../header/header.component";
 
 /**
  * Created by tatiana.gorbunova on 03.12.2016.
@@ -26,6 +27,7 @@ import {InitialModule} from "../initial/initial.module";
     declarations: [
         MainComponent,
         SidebarComponent,
+        HeaderComponent
     ],
     providers: [],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]

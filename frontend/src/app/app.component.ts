@@ -19,7 +19,6 @@ export class AppComponent {
     constructor(viewContainerRef: ViewContainerRef, private renderer: Renderer, private router: Router, translate : TranslateService) {
         this.viewContainerRef = viewContainerRef;
         translate.addLangs(["ru"]);
-        //translate.addLangs(["en", "ru"]);
         translate.setDefaultLang('ru');
 
         let browserLang = translate.getBrowserLang();

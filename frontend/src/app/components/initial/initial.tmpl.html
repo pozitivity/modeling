@@ -1,1 +1,16 @@
-Initial
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Время</th>
+                <th>Скорость</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let measurement of measurements">
+                <td>{{ measurement.time }}</td>
+                <td>{{ measurement.speed }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

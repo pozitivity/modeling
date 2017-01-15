@@ -30,6 +30,7 @@ public class MeasurementServiceImpl implements MeasurementService {
     }
 
     private void readExcel() {
+        measurements.clear();
         try {
             FileInputStream file = new FileInputStream(getClass().getClassLoader().getResource("wind.xlsx").getPath());
 
@@ -50,7 +51,8 @@ public class MeasurementServiceImpl implements MeasurementService {
                         measurement.setSpeed(cell.getNumericCellValue());
                     }
                 }
-                measurements.add(measurement);
+                if (measurement != null)
+                    measurements.add(measurement);
             }
             file.close();
 

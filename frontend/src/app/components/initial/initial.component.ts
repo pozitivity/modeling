@@ -17,13 +17,20 @@ export class InitialComponent {
 
     }
 
-    private measurements: Measurement[];
+    private measurements: Measurement[] = [];
+    private svg: any;
 
     ngOnInit() {
         this.measurementService.getMeasurements().subscribe((measurements) => {
             measurements.map(m => this.measurements.push(m));
-            console.log(this.measurements);
-            console.log(D3);
         });
+
+        this.initSvg();
+    }
+
+    private initSvg() {
+        this.svg = D3.select("svg")
+            .append("g")
+            .attr("transform", "translate(" + 50 + "," + 20 + ")");
     }
 }
