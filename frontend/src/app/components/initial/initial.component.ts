@@ -41,7 +41,6 @@ export class InitialComponent {
     private x: any;
     private y: any;
     private line: D3Shape.Line<[any, any]>;
-    private parseTime: any;
 
     ngOnInit() {
         this.measurementService.getMeasurements().subscribe((measurements) => {
@@ -57,7 +56,6 @@ export class InitialComponent {
     }
 
     private initSvg() {
-        this.parseTime = D3TimeFormat.timeParse("%dd");
         this.svg = D3.select("svg")
             .attr("transform", "translate(" + this.margin.left + "," + this.margin.right + ")")
             .call(D3Zoom.zoom().scaleExtent([1, 10]).on("zoom", () => {
